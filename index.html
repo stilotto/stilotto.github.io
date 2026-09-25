@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stilotto · projects</title>
+<meta name="description" content="Games and experiments by stilotto, all playable in the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c1017;
+    --panel: #141b26;
+    --line: #243044;
+    --text: #e6ebf2;
+    --muted: #8d99ab;
+    --blue: #4da6ff;
+    --red: #ff5c5c;
+    --olive: #7d8660;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(77,166,255,.12), transparent 60%),
+      radial-gradient(900px 500px at 95% 0%, rgba(255,92,92,.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font: 16px/1.55 Inter, system-ui, sans-serif;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 16px 64px; }
+
+  header { margin-bottom: 40px; }
+  .eyebrow {
+    font: 600 12px/1 Inter, sans-serif; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1 {
+    font: 700 clamp(34px, 6vw, 52px)/1.05 "Chakra Petch", sans-serif;
+    margin: 10px 0 12px; letter-spacing: .01em;
+  }
+  h1 span { color: var(--blue); }
+  .intro { color: var(--muted); max-width: 560px; margin: 0; }
+
+  .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .grid .feature { grid-column: 1 / -1; }
+
+  /* ---------- project card ---------- */
+  .card {
+    position: relative; display: grid; grid-template-columns: 1.35fr 1fr;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden; text-decoration: none; color: inherit;
+    box-shadow: 0 20px 50px -25px rgba(0,0,0,.8);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+    background: linear-gradient(120deg, rgba(77,166,255,.7), transparent 35%, transparent 65%, rgba(255,92,92,.7));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .25s ease;
+  }
+  .card:hover, .card:focus-visible {
+    transform: translateY(-4px); border-color: transparent;
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,.9), 0 0 0 1px rgba(77,166,255,.15);
+  }
+  .card:hover::before, .card:focus-visible::before { opacity: 1; }
+  .card:focus-visible { outline: none; }
+
+  .art { position: relative; min-height: 300px; background: #1b2230; }
+  .art svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .body { padding: 28px 28px 26px; display: flex; flex-direction: column; gap: 14px; }
+  .status {
+    align-self: flex-start; display: inline-flex; align-items: center; gap: 8px;
+    font: 600 11px/1 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase;
+    color: #b8f0c8; background: rgba(80,200,120,.1); border: 1px solid rgba(80,200,120,.3);
+    padding: 6px 10px; border-radius: 999px;
+  }
+  .status i { width: 7px; height: 7px; border-radius: 50%; background: #50c878; box-shadow: 0 0 8px #50c878; animation: blink 2s infinite; }
+  .card h2 {
+    font: 700 34px/1 "Chakra Petch", sans-serif; margin: 2px 0 0; letter-spacing: .01em;
+  }
+  .card h2 .vs { font-size: .55em; color: var(--muted); vertical-align: middle; margin: 0 .25em; }
+  .card h2 .b { color: var(--blue); }
+  .card h2 .d { color: var(--red); }
+  .card p { margin: 0; color: #b7c1cf; }
+  .facts { list-style: none; padding: 0; margin: 2px 0 0; display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+  .facts li { display: flex; gap: 10px; align-items: baseline; }
+  .facts li::before { content: "▸"; color: var(--blue); font-size: 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span {
+    font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px;
+  }
+  .play {
+    margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
+    font: 700 15px/1 "Chakra Petch", sans-serif; letter-spacing: .08em; text-transform: uppercase;
+    color: #06101c; background: linear-gradient(135deg, #7cc0ff, var(--blue));
+    padding: 13px 20px; border-radius: 10px;
+    box-shadow: 0 8px 24px -8px rgba(77,166,255,.7);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover .play { transform: translateX(3px); box-shadow: 0 10px 30px -8px rgba(77,166,255,.95); }
+  .play svg { width: 14px; height: 14px; }
+
+  .soon {
+    border: 1px dashed var(--line); border-radius: 18px; padding: 26px; min-height: 150px;
+    display: flex; flex-direction: column; justify-content: center; gap: 6px; color: var(--muted);
+  }
+  .soon strong { font: 600 18px/1.2 "Chakra Petch", sans-serif; color: #c3ccd8; }
+
+  footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
+  footer a { color: var(--muted); }
+
+  /* ---------- scene animation ---------- */
+  .drone { animation: bob 3.2s ease-in-out infinite; }
+  .drone:nth-of-type(2) { animation-delay: -.8s; animation-duration: 3.6s; }
+  .drone:nth-of-type(3) { animation-delay: -1.6s; }
+  .drone:nth-of-type(4) { animation-delay: -2.2s; animation-duration: 2.9s; }
+  .drone:nth-of-type(5) { animation-delay: -.4s; animation-duration: 3.9s; }
+  .rotor { transform-box: fill-box; transform-origin: center; animation: spin .35s linear infinite; }
+  .tracer { stroke-dasharray: 14 400; animation: fire 1.8s linear infinite; }
+  .tracer.t2 { animation-delay: -.6s; }
+  .tracer.t3 { animation-delay: -1.2s; animation-duration: 2.2s; }
+  .tracer.t4 { animation-delay: -.3s; animation-duration: 2.5s; }
+  .flash { transform-box: fill-box; transform-origin: center; animation: flash 2.2s ease-out infinite; }
+  .flash.f2 { animation-delay: -1.1s; }
+  .beacon { animation: blink 1.6s infinite; }
+
+  @keyframes bob { 50% { transform: translateY(-6px); } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes fire { from { stroke-dashoffset: 14; } to { stroke-dashoffset: -400; } }
+  @keyframes flash { 0% { opacity: 0; transform: scale(.3); } 8% { opacity: 1; } 40% { opacity: 0; transform: scale(1.6); } 100% { opacity: 0; } }
+  @keyframes blink { 50% { opacity: .35; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  @media (max-width: 760px) {
+    .wrap { padding-top: 36px; }
+    .card { grid-template-columns: 1fr; }
+    .art { min-height: 0; aspect-ratio: 16 / 10; }
+    .body { padding: 22px 20px 22px; }
+    .card h2 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">stilotto · projects</div>
+    <h1>Things we're <span>building</span></h1>
+    <p class="intro">Games and experiments that run in your browser. Nothing to install, just pick one and play.</p>
+  </header>
+
+  <main class="grid">
+    <a class="card feature" href="/bots-vs-drones/game.html" aria-label="Play Bots vs Drones">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0d121b"/>
+              <stop offset="1" stop-color="#26324a"/>
+            </linearGradient>
+            <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#5d6649"/>
+              <stop offset=".55" stop-color="#3b4636"/>
+              <stop offset="1" stop-color="#1f2a22"/>
+            </linearGradient>
+            <radialGradient id="glowR" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#ffb199"/><stop offset=".4" stop-color="#ff5c5c" stop-opacity=".7"/><stop offset="1" stop-color="#ff5c5c" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="glowB" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#e6f3ff"/><stop offset=".4" stop-color="#4da6ff" stop-opacity=".7"/><stop offset="1" stop-color="#4da6ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="vign" cx=".5" cy=".45" r=".75">
+              <stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/>
+            </radialGradient>
+
+            <g id="bot">
+              <!-- small isometric tank-bot -->
+              <path d="M-14 0 L0 -7 L14 0 L0 7 Z" fill="#7cc0ff"/>
+              <path d="M-14 0 L0 7 L0 15 L-14 8 Z" fill="#2f6fb0"/>
+              <path d="M14 0 L0 7 L0 15 L14 8 Z" fill="#4da6ff"/>
+              <path d="M-6 -3 L0 -6 L6 -3 L0 0 Z" fill="#bfe3ff"/>
+              <path d="M0 -3 L12 -9" stroke="#bfe3ff" stroke-width="2.2" stroke-linecap="round"/>
+            </g>
+            <g id="drone">
+              <path d="M-10 0 L0 -5 L10 0 L0 5 Z" fill="#ff5c5c"/>
+              <path d="M-10 0 L0 5 L0 8 L-10 3 Z" fill="#b03a3a"/>
+              <path d="M10 0 L0 5 L0 8 L10 3 Z" fill="#d94a4a"/>
+              <g stroke="#ffc2b3" stroke-width="1" opacity=".85">
+                <line x1="-10" y1="0" x2="-17" y2="-3"/><line x1="10" y1="0" x2="17" y2="-3"/>
+                <line x1="0" y1="-5" x2="0" y2="-10"/><line x1="0" y1="5" x2="0" y2="9"/>
+              </g>
+              <g class="rotor" fill="none" stroke="#ffc2b3" stroke-width="1.2" opacity=".7">
+                <ellipse cx="-17" cy="-3" rx="6" ry="2"/>
+              </g>
+              <g class="rotor" fill="none" stroke="#ffc2b3" stroke-width="1.2" opacity=".7">
+                <ellipse cx="17" cy="-3" rx="6" ry="2"/>
+              </g>
+              <circle class="beacon" cx="0" cy="-1" r="1.6" fill="#fff3ee"/>
+            </g>
+          </defs>
+
+          <rect width="640" height="400" fill="url(#sky)"/>
+          <g fill="#cfe0ff" opacity=".5">
+            <circle cx="70" cy="30" r="1"/><circle cx="190" cy="18" r=".8"/><circle cx="300" cy="44" r="1"/>
+            <circle cx="420" cy="22" r=".7"/><circle cx="560" cy="36" r="1.1"/><circle cx="610" cy="12" r=".7"/>
+            <circle cx="30" cy="70" r=".7"/><circle cx="500" cy="64" r=".8"/>
+          </g>
+
+          <!-- terrain -->
+          <path d="M0 132 C60 118 110 128 170 112 C230 96 280 118 340 108 C410 96 470 114 530 102 C580 92 615 104 640 98 L640 400 L0 400 Z" fill="url(#ground)"/>
+          <g fill="none" stroke="#c9d1a8" stroke-opacity=".22" stroke-width="1">
+            <path d="M0 160 C80 146 140 162 220 146 C300 130 360 152 440 140 C520 128 580 146 640 136"/>
+            <path d="M0 196 C70 184 150 204 240 186 C320 170 390 196 470 182 C540 170 600 186 640 178"/>
+            <path d="M0 240 C90 226 160 250 250 232 C340 214 420 244 500 226 C560 214 610 232 640 224"/>
+            <path d="M0 292 C80 280 170 302 270 282 C360 266 430 296 520 278 C580 266 620 284 640 276"/>
+            <path d="M0 350 C100 336 190 360 290 340 C380 324 460 354 550 336 C600 326 625 340 640 334"/>
+            <path d="M180 214 C200 202 250 204 262 214 C274 226 236 234 206 230 C184 226 172 222 180 214 Z"/>
+            <path d="M420 262 C444 250 500 252 510 264 C520 278 474 284 446 280 C424 276 410 270 420 262 Z"/>
+            <path d="M436 266 C452 260 488 261 494 267 C498 274 470 277 454 275 C440 273 430 270 436 266 Z"/>
+          </g>
+
+          <!-- red base (far) -->
+          <g transform="translate(470 108)">
+            <ellipse cx="0" cy="14" rx="30" ry="7" fill="#000" opacity=".3"/>
+            <path d="M-20 -6 L0 -14 L20 -6 L0 2 Z" fill="#d94a4a"/>
+            <path d="M-20 -6 L0 2 L0 18 L-20 10 Z" fill="#7a2626"/>
+            <path d="M20 -6 L0 2 L0 18 L20 10 Z" fill="#b03a3a"/>
+          </g>
+          <!-- blue base (near) -->
+          <g transform="translate(96 330)">
+            <ellipse cx="0" cy="26" rx="54" ry="12" fill="#000" opacity=".35"/>
+            <path d="M-38 -10 L0 -26 L38 -10 L0 6 Z" fill="#6fb6ff"/>
+            <path d="M-38 -10 L0 6 L0 34 L-38 18 Z" fill="#1f4f80"/>
+            <path d="M38 -10 L0 6 L0 34 L38 18 Z" fill="#2f6fb0"/>
+            <path d="M-14 -12 L0 -18 L14 -12 L0 -6 Z" fill="#bfe3ff" opacity=".8"/>
+          </g>
+
+          <!-- ground shadows under drones -->
+          <g fill="#000" opacity=".22">
+            <ellipse cx="330" cy="206" rx="12" ry="3"/><ellipse cx="385" cy="190" rx="10" ry="3"/>
+            <ellipse cx="290" cy="178" rx="9" ry="2.5"/><ellipse cx="430" cy="226" rx="12" ry="3"/>
+            <ellipse cx="250" cy="238" rx="11" ry="3"/>
+          </g>
+
+          <!-- tracers: bots firing up, drones firing down -->
+          <g stroke-width="2.4" stroke-linecap="round" fill="none">
+            <path class="tracer" d="M215 292 L330 146" stroke="#bfe3ff"/>
+            <path class="tracer t2" d="M300 318 L385 128" stroke="#bfe3ff"/>
+            <path class="tracer t3" d="M385 142 L360 300" stroke="#ffc2b3"/>
+            <path class="tracer t4" d="M250 178 L180 296" stroke="#ffc2b3"/>
+          </g>
+          <circle class="flash" cx="330" cy="150" r="14" fill="url(#glowB)"/>
+          <circle class="flash f2" cx="362" cy="298" r="16" fill="url(#glowR)"/>
+
+          <!-- drones (air) -->
+          <g class="drone"><use href="#drone" transform="translate(330 146)"/></g>
+          <g class="drone"><use href="#drone" transform="translate(385 128) scale(.85)"/></g>
+          <g class="drone"><use href="#drone" transform="translate(290 118) scale(.75)"/></g>
+          <g class="drone"><use href="#drone" transform="translate(430 168)"/></g>
+          <g class="drone"><use href="#drone" transform="translate(250 178) scale(.95)"/></g>
+
+          <!-- bots (ground) -->
+          <g fill="#000" opacity=".3">
+            <ellipse cx="215" cy="306" rx="16" ry="4"/><ellipse cx="300" cy="332" rx="16" ry="4"/>
+            <ellipse cx="360" cy="312" rx="16" ry="4"/><ellipse cx="180" cy="310" rx="14" ry="4"/>
+          </g>
+          <use href="#bot" transform="translate(215 292)"/>
+          <use href="#bot" transform="translate(300 318)"/>
+          <use href="#bot" transform="translate(360 298) scale(.95)"/>
+          <use href="#bot" transform="translate(180 296) scale(.9)"/>
+
+          <rect width="640" height="400" fill="url(#vign)"/>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="status"><i></i>Playable · in development</span>
+        <h2><span class="b">Bots</span><span class="vs">vs</span><span class="d">Drones</span></h2>
+        <p>A 3D auto-battler. Spend your budget on an army of ground bots, give them their orders, then watch them fight an AI's drone swarm.</p>
+        <ul class="facts">
+          <li>Pick stance and target priority. Units fight on their own.</li>
+          <li>Destroy the enemy base to win.</li>
+          <li>Design your own custom units.</li>
+        </ul>
+        <div class="tags"><span>Strategy</span><span>3D</span><span>vs AI</span></div>
+        <span class="play">
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="currentColor"/></svg>
+          Play now
+        </span>
+      </div>
+    </a>
+
+    <div class="soon">
+      <strong>More on the way</strong>
+      <span>New projects show up here as we build them.</span>
+    </div>
+  </main>
+
+  <footer>Made by stilotto · <a href="https://github.com/stilotto">GitHub</a></footer>
+</div>
+</body>
+</html>
