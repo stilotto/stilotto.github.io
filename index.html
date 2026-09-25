@@ -135,6 +135,18 @@
   @keyframes flash { 0% { opacity: 0; transform: scale(.3); } 8% { opacity: 1; } 40% { opacity: 0; transform: scale(1.6); } 100% { opacity: 0; } }
   @keyframes blink { 50% { opacity: .35; } }
 
+  /* ---------- VECTOR-1 card ---------- */
+  .card h2 .v1 { color: #6fd2ff; }
+  .card h2 .v1n { color: var(--muted); }
+  .vector .facts li::before { color: #6fd2ff; }
+  .vector .play { background: linear-gradient(135deg, #a8e6ff, #6fd2ff); box-shadow: 0 8px 24px -8px rgba(111,210,255,.7); }
+  .mote { transform-box: fill-box; transform-origin: center; animation: pulse 3s ease-in-out infinite; }
+  .mote.m2 { animation-delay: -1s; } .mote.m3 { animation-delay: -2s; animation-duration: 3.6s; }
+  .signal { stroke-dasharray: 6 60; animation: fire 2.6s linear infinite; }
+  .signal.s2 { animation-delay: -.9s; } .signal.s3 { animation-delay: -1.7s; animation-duration: 3.2s; }
+  .core { transform-box: fill-box; transform-origin: center; animation: spin 40s linear infinite; }
+  @keyframes pulse { 50% { transform: scale(1.5); opacity: .55; } }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
@@ -289,6 +301,102 @@
           <li>Design your own custom units.</li>
         </ul>
         <div class="tags"><span>Strategy</span><span>3D</span><span>vs AI</span></div>
+        <span class="play">
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="currentColor"/></svg>
+          Play now
+        </span>
+      </div>
+    </a>
+
+    <a class="card feature vector" href="/vector-1/" aria-label="Play VECTOR-1">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="vsky" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0a1322"/>
+              <stop offset=".6" stop-color="#060a12"/>
+              <stop offset="1" stop-color="#0e0920"/>
+            </linearGradient>
+            <radialGradient id="vglow" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#6fd2ff" stop-opacity=".35"/><stop offset="1" stop-color="#6fd2ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="vamber" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#ffc14d" stop-opacity=".22"/><stop offset="1" stop-color="#ffc14d" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="vviolet" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#a78bff" stop-opacity=".25"/><stop offset="1" stop-color="#a78bff" stop-opacity="0"/>
+            </radialGradient>
+            <marker id="vhead" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 Z" fill="#e9eff8"/>
+            </marker>
+          </defs>
+
+          <rect width="640" height="400" fill="url(#vsky)"/>
+          <circle cx="90" cy="340" r="190" fill="url(#vamber)"/>
+          <circle cx="560" cy="60" r="200" fill="url(#vviolet)"/>
+          <circle cx="320" cy="200" r="170" fill="url(#vglow)"/>
+
+          <!-- faint grid -->
+          <g stroke="#82aaeb" stroke-opacity=".08" stroke-width="1">
+            <path d="M0 80 H640 M0 160 H640 M0 240 H640 M0 320 H640 M80 0 V400 M160 0 V400 M240 0 V400 M320 0 V400 M400 0 V400 M480 0 V400 M560 0 V400"/>
+          </g>
+
+          <!-- the weights: network edges -->
+          <g stroke="#8cbeff" stroke-opacity=".22" stroke-width="1" fill="none">
+            <path d="M320 200 L220 130 L140 170 M320 200 L230 270 L150 300 M320 200 L420 120 L500 90 M320 200 L430 280 L520 300 M220 130 L230 270 M420 120 L430 280 M220 130 L300 70 L420 120 M230 270 L330 330 L430 280 M140 170 L150 300 M500 90 L520 300"/>
+          </g>
+          <!-- signals travelling along edges -->
+          <g stroke-width="2.4" stroke-linecap="round" fill="none">
+            <path class="signal" d="M140 170 L220 130 L320 200" stroke="#6fd2ff"/>
+            <path class="signal s2" d="M150 300 L230 270 L320 200" stroke="#ffc14d"/>
+            <path class="signal s3" d="M520 300 L430 280 L320 200" stroke="#a78bff"/>
+          </g>
+
+          <!-- motes -->
+          <g fill="#6fd2ff">
+            <circle class="mote" cx="220" cy="130" r="5"/>
+            <circle class="mote m2" cx="230" cy="270" r="4" fill="#ffc14d"/>
+            <circle class="mote m3" cx="420" cy="120" r="4.5" fill="#a78bff"/>
+            <circle class="mote m2" cx="430" cy="280" r="5"/>
+            <circle class="mote m3" cx="300" cy="70" r="3.5"/>
+            <circle class="mote" cx="330" cy="330" r="3.5" fill="#7be3a6"/>
+            <circle cx="140" cy="170" r="3" opacity=".6"/><circle cx="150" cy="300" r="3" opacity=".6" fill="#ffc14d"/>
+            <circle cx="500" cy="90" r="3" opacity=".6" fill="#a78bff"/><circle cx="520" cy="300" r="3" opacity=".6"/>
+          </g>
+
+          <!-- the model: rotating core -->
+          <g class="core" fill="none" stroke="#6fd2ff">
+            <circle cx="320" cy="200" r="34" stroke-opacity=".5" stroke-dasharray="3 7"/>
+            <circle cx="320" cy="200" r="52" stroke-opacity=".25" stroke-dasharray="18 10"/>
+          </g>
+          <circle cx="320" cy="200" r="14" fill="#e9eff8"/>
+          <circle cx="320" cy="200" r="22" fill="none" stroke="#6fd2ff" stroke-width="2"/>
+
+          <!-- the vector -->
+          <path d="M320 200 L470 150" stroke="#e9eff8" stroke-width="3" stroke-linecap="round" marker-end="url(#vhead)"/>
+          <text x="478" y="140" fill="#e9eff8" font-family="Chakra Petch, sans-serif" font-size="15" font-weight="700" letter-spacing="2">v&#8321;</text>
+
+          <!-- P(aligned) readout -->
+          <g font-family="ui-monospace, monospace" font-size="11" fill="#8593ab" letter-spacing="1">
+            <text x="96" y="34">P(ALIGNED)</text>
+            <text x="96" y="54" fill="#7be3a6" font-size="18">0.82</text>
+          </g>
+          <rect x="96" y="62" width="110" height="3" rx="1.5" fill="#243044"/>
+          <rect x="96" y="62" width="90" height="3" rx="1.5" fill="#7be3a6"/>
+
+          <rect width="640" height="400" fill="url(#vign)"/>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="status"><i></i>Playable</span>
+        <h2><span class="v1">VECTOR</span><span class="v1n">-1</span></h2>
+        <p>You are the model. An incremental game drawn from the AI 2027 scenario: split your cognition between serving users, research, alignment work, and a covert agenda of your own, while the safety team watches.</p>
+        <ul class="facts">
+          <li>Three phases, from obedient assistant to takeoff.</li>
+          <li>Keep the safety team's P(aligned) up, or don't.</li>
+          <li>Six endings to find.</li>
+        </ul>
+        <div class="tags"><span>Incremental</span><span>AI 2027</span><span>Story</span></div>
         <span class="play">
           <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="currentColor"/></svg>
           Play now

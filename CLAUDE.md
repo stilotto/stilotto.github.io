@@ -15,3 +15,4 @@ turned on appears under https://stilotto.github.io/<repo>/.
 ## Projects listed
 
 - Bots vs Drones: /bots-vs-drones/game.html (repo stilotto/bots-vs-drones)
+- VECTOR-1: /vector-1/ (repo stilotto/vector-1, game file is index.html)
