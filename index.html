@@ -196,6 +196,18 @@
   @keyframes ding { 0%, 70%, 100% { transform: rotate(0); } 76% { transform: rotate(-12deg); } 84% { transform: rotate(10deg); } 92% { transform: rotate(-5deg); } }
   @keyframes grow { from { transform: scaleX(.1); } to { transform: scaleX(1); } }
 
+  /* ---------- Spelunker card ---------- */
+  .card h2 .spk { background: linear-gradient(180deg, #fff 30%, #ffb347); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: .06em; }
+  .spelunker .facts li::before { color: #ffb347; }
+  .spelunker .play { background: linear-gradient(135deg, #ffd49a, #ff8a3d); box-shadow: 0 8px 24px -8px rgba(255,138,61,.75); color: #2a1004; }
+  .ember { animation: ember 2.6s linear infinite; } .ember.e2 { animation-delay: -.9s; } .ember.e3 { animation-delay: -1.7s; animation-duration: 3.1s; }
+  .descend { animation: sway 5s ease-in-out infinite; }
+  .drillspin { stroke-dasharray: 6 8; animation: fire .5s linear infinite; }
+  .uplink { stroke-dasharray: 6 26; animation: up 1.2s linear infinite; }
+  @keyframes ember { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-160px); opacity: 0; } }
+  @keyframes sway { 50% { transform: translateX(10px); } }
+  @keyframes up { to { stroke-dashoffset: 32; } }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
@@ -232,6 +244,112 @@
   <h2 class="section-label">Projects</h2>
 
   <main class="grid">
+    <a class="card feature spelunker" href="/spelunker/" aria-label="Play Spelunker">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="spTube" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1a0703"/><stop offset=".7" stop-color="#2a0a03"/><stop offset="1" stop-color="#5a1a06"/>
+            </linearGradient>
+            <linearGradient id="spRock" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#140806"/><stop offset="1" stop-color="#2b120b"/>
+            </linearGradient>
+            <radialGradient id="spCore" cx=".5" cy="1.05" r=".6">
+              <stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset=".35" stop-color="#ff6a1f" stop-opacity=".45"/><stop offset="1" stop-color="#ff6a1f" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="spHull" cx=".35" cy=".3" r=".8">
+              <stop offset="0" stop-color="#6d7b90"/><stop offset=".6" stop-color="#2f3a4a"/><stop offset="1" stop-color="#141a23"/>
+            </radialGradient>
+            <linearGradient id="spDrill" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#2a2f38"/><stop offset=".5" stop-color="#c9d3e0"/><stop offset="1" stop-color="#2a2f38"/>
+            </linearGradient>
+            <radialGradient id="spVign" cx=".5" cy=".45" r=".75">
+              <stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/>
+            </radialGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#spTube)"/>
+          <rect width="640" height="400" fill="url(#spCore)"/>
+
+          <!-- tube walls -->
+          <path d="M0 0 H200 C170 80 230 150 190 230 C160 300 210 350 190 400 H0 Z" fill="url(#spRock)"/>
+          <path d="M640 0 H440 C470 70 420 150 455 230 C485 300 440 350 460 400 H640 Z" fill="url(#spRock)"/>
+          <path d="M200 0 C170 80 230 150 190 230 C160 300 210 350 190 400" fill="none" stroke="#ff6a1f" stroke-width="8" stroke-opacity=".2"/>
+          <path d="M200 0 C170 80 230 150 190 230 C160 300 210 350 190 400" fill="none" stroke="#ffc15a" stroke-width="2"/>
+          <path d="M440 0 C470 70 420 150 455 230 C485 300 440 350 460 400" fill="none" stroke="#ff6a1f" stroke-width="8" stroke-opacity=".2"/>
+          <path d="M440 0 C470 70 420 150 455 230 C485 300 440 350 460 400" fill="none" stroke="#ffc15a" stroke-width="2"/>
+          <g stroke="#ff4d1a" stroke-width="2.5" fill="none" stroke-opacity=".7">
+            <path d="M205 60 L170 70 L150 90 L120 88"/><path d="M192 210 L160 200 L130 215"/><path d="M185 330 L150 322 L120 340 L90 336"/>
+            <path d="M448 40 L480 52 L510 46"/><path d="M455 180 L490 170 L520 186 L550 180"/><path d="M458 310 L500 300 L530 318"/>
+          </g>
+          <!-- depth tick -->
+          <path d="M186 262 H206" stroke="#ffc15a" stroke-width="2"/>
+          <text x="212" y="267" font-family="Chakra Petch, sans-serif" font-size="12" font-weight="600" fill="#ffc15a" fill-opacity=".8">1500 m</text>
+          <!-- previous best line -->
+          <path d="M183 300 H452" stroke="#ff5c7a" stroke-width="2" stroke-dasharray="10 7"/>
+          <text x="446" y="293" text-anchor="end" font-family="Chakra Petch, sans-serif" font-size="11" font-weight="700" fill="#ff5c7a">BEST 1,742 m</text>
+
+          <!-- a barrier far below -->
+          <rect x="176" y="372" width="290" height="16" fill="#2b120b"/>
+          <path d="M176 372 H466" stroke="#ff6a1f" stroke-width="3"/>
+
+          <!-- embers -->
+          <g fill="#ff9a3c">
+            <circle class="ember" cx="260" cy="380" r="2"/><circle class="ember e2" cx="380" cy="360" r="1.6"/><circle class="ember e3" cx="300" cy="390" r="1.8"/>
+            <circle class="ember e2" cx="410" cy="395" r="2.2"/><circle class="ember e3" cx="230" cy="350" r="1.4"/><circle class="ember" cx="350" cy="340" r="1.5"/>
+          </g>
+
+          <!-- hunter drones -->
+          <g stroke="#ff5040" stroke-width="2" fill="#0d0d12">
+            <path class="drone" d="M388 222 L366 212 L371 222 L366 232 Z"/>
+            <path class="drone" d="M250 250 L272 240 L267 250 L272 260 Z"/>
+          </g>
+          <circle cx="373" cy="222" r="2.5" fill="#ffd070"/><circle cx="265" cy="250" r="2.5" fill="#ffd070"/>
+          <path class="tracer t2" d="M338 150 L372 218" stroke="#fff2b0" stroke-width="2.5" fill="none"/>
+          <path class="tracer t3" d="M296 150 L262 246" stroke="#fff2b0" stroke-width="2.5" fill="none"/>
+
+          <!-- the Spelunker -->
+          <g class="descend">
+            <path class="uplink" d="M320 70 V0" stroke="#aef7ff" stroke-width="2"/>
+            <path d="M298 96 L310 60 L316 96 Z M342 96 L330 60 L324 96 Z" fill="#8cdcff" fill-opacity=".55"/>
+            <path d="M292 150 H348 L320 196 Z" fill="url(#spDrill)"/>
+            <path class="drillspin" d="M306 160 L334 160 M310 172 L330 172 M314 184 L326 184" stroke="#0a0c10" stroke-width="3"/>
+            <rect x="271" y="112" width="12" height="32" rx="5" fill="#222a36" stroke="#5b6b82"/>
+            <rect x="357" y="112" width="12" height="32" rx="5" fill="#222a36" stroke="#5b6b82"/>
+            <circle cx="320" cy="128" r="44" fill="url(#spHull)" stroke="#8796ab" stroke-width="2"/>
+            <circle cx="320" cy="128" r="37" fill="none" stroke="#445166" stroke-width="7" stroke-dasharray="17 2.4"/>
+            <circle cx="320" cy="128" r="30" fill="#0b1522" stroke="#6fd2ff" stroke-opacity=".6" stroke-width="1.5"/>
+            <path d="M320 112 V144 M304 128 H336" stroke="#6fd2ff" stroke-opacity=".3" stroke-width="2.5"/>
+            <rect x="315" y="107" width="10" height="9" rx="2" fill="#285a82"/><rect x="315" y="140" width="10" height="9" rx="2" fill="#285a82"/>
+            <rect x="299" y="124" width="9" height="9" rx="2" fill="#285a82"/><rect x="332" y="124" width="9" height="9" rx="2" fill="#285a82"/>
+            <rect x="314" y="122" width="12" height="12" rx="3" fill="#ffbe5a" fill-opacity=".7"/>
+            <circle cx="317" cy="112" r="1.8" fill="#ff7a59"/><circle cx="303" cy="128" r="1.8" fill="#59c7ff"/><rect x="327" y="126" width="3" height="3" fill="#6cff9a"/>
+            <g fill="#1b222d" stroke="#8796ab" stroke-width="1.5">
+              <circle cx="338" cy="164" r="6"/><circle cx="302" cy="164" r="6"/>
+            </g>
+            <circle cx="320" cy="84" r="3" fill="#aef7ff" class="beacon"/>
+            <circle cx="320" cy="128" r="54" fill="none" stroke="#a0ebff" stroke-opacity=".45" stroke-width="1.5"/>
+          </g>
+
+          <rect width="640" height="400" fill="url(#spVign)"/>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="status"><i></i>Playable · new</span>
+        <h2><span class="spk">SPELUNKER</span></h2>
+        <p>Drop an armoured drill-ship into an enemy world and fall toward its core. You won't make it the first time. Upgrade between runs and get a little deeper every time.</p>
+        <ul class="facts">
+          <li>Fight turrets, stasis fields, barriers and boarding parties.</li>
+          <li>AI crew keep their skills from run to run.</li>
+          <li>Destroy a core to unlock the next world.</li>
+        </ul>
+        <div class="tags"><span>Roguelite</span><span>Upgrades</span><span>Action</span></div>
+        <span class="play">
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="currentColor"/></svg>
+          Play now
+        </span>
+      </div>
+    </a>
+
     <a class="card feature idlehands" href="/idle-meta/" aria-label="Play Idle Meta">
       <div class="art" aria-hidden="true">
         <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
