@@ -161,6 +161,16 @@
   @keyframes fall { to { stroke-dashoffset: -28; } }
   @keyframes rise { 0% { transform: translate(0,0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translate(10px,-40px); opacity: 0; } }
 
+  /* ---------- Idle Hands card ---------- */
+  .card h2 .idle { background: linear-gradient(90deg, #fff, #c38bff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .idlehands .facts li::before { color: #c38bff; }
+  .idlehands .play { background: linear-gradient(135deg, #d6b8ff, #a26bff); box-shadow: 0 8px 24px -8px rgba(162,107,255,.75); color: #1a0b33; }
+  .num { animation: rise 2.4s ease-out infinite; } .num.u2 { animation-delay: -.8s; } .num.u3 { animation-delay: -1.6s; }
+  .ding { transform-box: fill-box; transform-origin: 50% 0; animation: ding 2.8s ease-in-out infinite; }
+  .bar-fill { transform-box: fill-box; transform-origin: left; animation: grow 3s ease-in-out infinite; }
+  @keyframes ding { 0%, 70%, 100% { transform: rotate(0); } 76% { transform: rotate(-12deg); } 84% { transform: rotate(10deg); } 92% { transform: rotate(-5deg); } }
+  @keyframes grow { from { transform: scaleX(.1); } to { transform: scaleX(1); } }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
@@ -183,6 +193,84 @@
   </header>
 
   <main class="grid">
+    <a class="card feature idlehands" href="/idle-meta/" aria-label="Play Idle Hands">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="ihBg" cx="30%" cy="20%" r="90%">
+              <stop offset="0" stop-color="#4a2490"/><stop offset=".55" stop-color="#1c1446"/><stop offset="1" stop-color="#0d0b1f"/>
+            </radialGradient>
+            <linearGradient id="ihFarm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fcbff"/><stop offset="1" stop-color="#fff0b8"/></linearGradient>
+            <radialGradient id="ihRpg" cx=".5" cy=".6" r=".75"><stop offset="0" stop-color="#8e2a3f"/><stop offset="1" stop-color="#140b22"/></radialGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#ihBg)"/>
+          <g fill="#fff" opacity=".5"><circle cx="60" cy="60" r="2"/><circle cx="580" cy="80" r="2"/><circle cx="520" cy="340" r="1.5"/><circle cx="110" cy="330" r="1.5"/><circle cx="600" cy="220" r="1.5"/></g>
+          <!-- phone -->
+          <rect x="228" y="24" width="184" height="360" rx="30" fill="#0a0818" stroke="#6c55c9" stroke-width="4"/>
+          <rect x="242" y="44" width="156" height="324" rx="18" fill="#171238"/>
+          <rect x="296" y="32" width="48" height="6" rx="3" fill="#2a2255"/>
+          <!-- status bar: level ring + XP -->
+          <circle cx="266" cy="68" r="12" fill="none" stroke="#2f2760" stroke-width="4"/>
+          <circle cx="266" cy="68" r="12" fill="none" stroke="#c38bff" stroke-width="4" stroke-dasharray="50 76" transform="rotate(-90 266 68)"/>
+          <rect x="286" y="62" width="96" height="10" rx="5" fill="#2f2760"/>
+          <rect class="bar-fill" x="286" y="62" width="96" height="10" rx="5" fill="#3ddc84"/>
+          <!-- game cards -->
+          <g>
+            <rect x="254" y="92" width="132" height="70" rx="14" fill="#23304a"/>
+            <rect x="262" y="100" width="54" height="54" rx="12" fill="url(#ihFarm)"/>
+            <path d="M262 136 Q280 124 298 132 T316 130 V154 H262Z" fill="#7fd14f"/>
+            <path d="M272 142 V130 L280 123 L288 130 V142Z" fill="#e0483b"/>
+            <rect x="324" y="108" width="52" height="8" rx="4" fill="#ffd23f"/><rect x="324" y="124" width="36" height="6" rx="3" fill="#6b6a9a"/>
+          </g>
+          <g>
+            <rect x="254" y="172" width="132" height="70" rx="14" fill="#3a1a3a"/>
+            <rect x="262" y="180" width="54" height="54" rx="12" fill="url(#ihRpg)"/>
+            <g stroke="#ece6f7" stroke-width="4" stroke-linecap="round"><line x1="274" y1="192" x2="304" y2="222"/><line x1="304" y1="192" x2="274" y2="222"/></g>
+            <g fill="#f2c14e"><rect x="270" y="210" width="12" height="4" transform="rotate(45 276 212)"/><rect x="296" y="210" width="12" height="4" transform="rotate(-45 302 212)"/></g>
+            <rect x="324" y="188" width="46" height="8" rx="4" fill="#ff7a8f"/><rect x="324" y="204" width="40" height="6" rx="3" fill="#6b6a9a"/>
+          </g>
+          <g>
+            <rect x="254" y="252" width="132" height="70" rx="14" fill="#3a2a14"/>
+            <rect x="262" y="260" width="54" height="54" rx="12" fill="#35211a"/>
+            <rect x="262" y="260" width="54" height="10" rx="4" fill="#7ccf5a"/><rect x="262" y="270" width="54" height="14" fill="#8a5a32"/><rect x="262" y="284" width="54" height="14" fill="#6b4226"/>
+            <rect x="284" y="264" width="10" height="30" fill="#140c07"/><path d="M281 290 h16 l-8 14z" fill="#ffd23f"/>
+            <rect x="324" y="268" width="50" height="8" rx="4" fill="#ffd23f"/><rect x="324" y="284" width="30" height="6" rx="3" fill="#6b6a9a"/>
+          </g>
+          <rect x="296" y="340" width="48" height="5" rx="2.5" fill="#3a3270"/>
+          <!-- notification bubble -->
+          <g class="ding">
+            <rect x="412" y="70" width="176" height="52" rx="16" fill="#2b2466" stroke="#8d74ff" stroke-width="2"/>
+            <text x="432" y="104" font-size="24">🎁</text>
+            <rect x="466" y="84" width="90" height="8" rx="4" fill="#fff" opacity=".9"/><rect x="466" y="100" width="64" height="6" rx="3" fill="#a9a5cf"/>
+          </g>
+          <!-- floating numbers -->
+          <g font-family="Outfit, system-ui, sans-serif" font-weight="800">
+            <text class="num" x="118" y="160" font-size="30" fill="#ffd23f">+1.2K</text>
+            <text class="num u2" x="92" y="250" font-size="24" fill="#3ddc84">+$25</text>
+            <text class="num u3" x="450" y="250" font-size="26" fill="#c38bff">LV UP</text>
+            <text class="num" x="470" y="330" font-size="22" fill="#4fd1ff" style="animation-delay:-1.2s">×2</text>
+          </g>
+          <!-- a hand -->
+          <text x="360" y="232" font-size="56">👆</text>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="status"><i></i>Playable</span>
+        <h2><span class="idle">Idle Hands</span></h2>
+        <p>An idle game about playing idle games. Your phone is full of them: a cozy farm, a grim fantasy RPG and a hole that just keeps going. Split your attention and your paycheck between them, then pop in and play each one.</p>
+        <ul class="facts">
+          <li>Budget Focus and real-ish money: whale or proudly free-to-play.</li>
+          <li>Prestige every game, fill a research tree, chase loot drops.</li>
+          <li>Keeps earning while you're away.</li>
+        </ul>
+        <div class="tags"><span>Idle</span><span>Incremental</span><span>Meta</span></div>
+        <span class="play">
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="currentColor"/></svg>
+          Play now
+        </span>
+      </div>
+    </a>
+
     <a class="card feature tavern" href="/the-hearth-and-ladle/" aria-label="Play The Common Room">
       <div class="art">
         <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">

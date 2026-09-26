@@ -14,6 +14,7 @@ turned on appears under https://stilotto.github.io/<repo>/.
 
 ## Projects listed
 
+- Idle Hands: /idle-meta/ (repo stilotto/idle-meta, multi-file ES modules, no build step)
 - Bots vs Drones: /bots-vs-drones/game.html (repo stilotto/bots-vs-drones)
 - VECTOR-1: /vector-1/ (repo stilotto/vector-1, game file is index.html)
 - The Common Room: /the-hearth-and-ladle/ (repo stilotto/the-hearth-and-ladle, multi-file ES modules, no build step)
