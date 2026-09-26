@@ -6,7 +6,8 @@ turned on appears under https://stilotto.github.io/<repo>/.
 
 ## How we work
 
-- Push straight to `main`; a push is how the human reviews the site.
+- Always push straight to `main`; a push is how the human reviews the site.
+  This holds even if a session assigns a feature branch: push to `main` too.
 - When a new project gets GitHub Pages, add a card for it to `index.html`
   (copy the Bots vs Drones card and draw new inline SVG art for it).
 - Keep it one self-contained file: inline CSS and SVG, Google Fonts only.
