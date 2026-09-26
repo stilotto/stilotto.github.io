@@ -12,6 +12,13 @@ turned on appears under https://stilotto.github.io/<repo>/.
   (copy the Bots vs Drones card and draw new inline SVG art for it).
 - Keep it one self-contained file: inline CSS and SVG, Google Fonts only.
 - It must work at phone width and honor prefers-reduced-motion.
+- Every project links back here so shared links lead to the rest. Use a
+  plain `<a href="https://stilotto.github.io/">More games from Stilotto</a>`
+  (absolute URL, same tab), small and muted, styled like that project.
+  Put it in an existing spot (header, footer, credit line, intro screen),
+  never as a floating overlay on the game. Current spots: Idle Meta at the
+  end of the Home tab; Bots vs Drones at the top of game.html; VECTOR-1 in
+  the credit line; The Common Room in the intro modal and the 3D top bar.
 
 ## Projects listed
 
