@@ -33,10 +33,12 @@ turned on appears under https://stilotto.github.io/<repo>/.
   never as a floating overlay on the game. Current spots: Idle Meta at the
   end of the Home tab; Bots vs Drones at the top of game.html; VECTOR-1 in
   the credit line; The Common Room in the intro modal and the 3D top bar;
-  Spelunker on the title screen and the hangar footer.
+  Spelunker on the title screen and the hangar footer; Survivors on the
+  title screen.
 
 ## Projects listed
 
+- Survivors: /survivors/ (repo stilotto/survivors, multi-file ES modules, no build step)
 - Idle Meta: /idle-meta/ (repo stilotto/idle-meta, multi-file ES modules, no build step)
 - Bots vs Drones: /bots-vs-drones/game.html (repo stilotto/bots-vs-drones)
 - VECTOR-1: /vector-1/ (repo stilotto/vector-1, game file is index.html)

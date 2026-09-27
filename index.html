@@ -208,6 +208,18 @@
   @keyframes sway { 50% { transform: translateX(10px); } }
   @keyframes up { to { stroke-dashoffset: 32; } }
 
+  /* ---------- Survivors card ---------- */
+  .card h2 .svv { color: #c8ef8a; font-family: Georgia, "Times New Roman", serif; font-style: italic; letter-spacing: .01em; }
+  .survivors .facts li::before { color: #b6f07a; }
+  .survivors .play { background: linear-gradient(135deg, #dcf7b0, #8fcf4a); box-shadow: 0 8px 24px -8px rgba(143,207,74,.7); color: #122006; }
+  .smoke { animation: smoke 4s ease-out infinite; } .smoke.k2 { animation-delay: -1.3s; } .smoke.k3 { animation-delay: -2.6s; }
+  .shamble { transform-box: fill-box; transform-origin: 50% 100%; animation: shamble 2.4s ease-in-out infinite; }
+  .shamble.z2 { animation-delay: -.8s; animation-duration: 2.9s; } .shamble.z3 { animation-delay: -1.5s; }
+  .sweep { transform-box: fill-box; transform-origin: 50% 0; animation: sweep 6s ease-in-out infinite; }
+  @keyframes smoke { from { transform: translate(0,0) scale(.6); opacity: .9; } to { transform: translate(18px,-120px) scale(2.4); opacity: 0; } }
+  @keyframes shamble { 50% { transform: rotate(4deg) translateX(3px); } }
+  @keyframes sweep { 50% { transform: rotate(-12deg); } }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
@@ -244,6 +256,117 @@
   <h2 class="section-label">Projects</h2>
 
   <main class="grid">
+    <a class="card feature survivors" href="/survivors/" aria-label="Play Survivors">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="svSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#05080c"/><stop offset=".6" stop-color="#101a1a"/><stop offset="1" stop-color="#1c2a20"/>
+            </linearGradient>
+            <radialGradient id="svMoon" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#e8f0d8" stop-opacity=".35"/><stop offset="1" stop-color="#e8f0d8" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="svField" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#18251a"/><stop offset="1" stop-color="#0a100b"/>
+            </linearGradient>
+            <linearGradient id="svCone" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b6f07a" stop-opacity=".35"/><stop offset="1" stop-color="#b6f07a" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="svWin" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#ffcf6a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf6a" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="svVign" cx=".5" cy=".45" r=".75">
+              <stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/>
+            </radialGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#svSky)"/>
+          <!-- moon -->
+          <circle cx="520" cy="70" r="70" fill="url(#svMoon)"/>
+          <circle cx="520" cy="70" r="22" fill="#dfe8cc"/>
+          <circle cx="512" cy="64" r="4" fill="#c4cfae"/><circle cx="527" cy="78" r="3" fill="#c4cfae"/>
+          <!-- stars -->
+          <g fill="#cfd8c0"><circle cx="60" cy="40" r="1"/><circle cx="140" cy="80" r="1.2"/><circle cx="250" cy="30" r="1"/><circle cx="400" cy="50" r="1"/><circle cx="600" cy="140" r="1"/><circle cx="330" cy="95" r=".8"/></g>
+          <!-- distant smoke plume -->
+          <g fill="#3a4238">
+            <circle class="smoke" cx="120" cy="190" r="12"/><circle class="smoke k2" cx="120" cy="190" r="14"/><circle class="smoke k3" cx="120" cy="190" r="10"/>
+          </g>
+          <path d="M112 212 L128 212 L122 200 Z" fill="#ff7a3a" fill-opacity=".7"/>
+          <!-- tree line -->
+          <path d="M0 225 Q20 200 40 218 Q60 190 85 214 Q105 196 130 216 Q160 192 185 218 Q210 200 240 222 L240 240 H0 Z" fill="#0b130d"/>
+          <path d="M400 222 Q430 196 455 218 Q480 200 505 214 Q535 188 560 216 Q590 198 615 214 Q630 204 640 212 V240 H400 Z" fill="#0b130d"/>
+          <!-- field -->
+          <path d="M0 232 Q320 212 640 232 V400 H0 Z" fill="url(#svField)"/>
+          <g stroke="#223324" stroke-width="2" fill="none">
+            <path d="M0 280 Q320 250 640 280"/><path d="M0 330 Q320 300 640 330"/><path d="M0 380 Q320 350 640 380"/>
+          </g>
+
+          <!-- farmhouse -->
+          <g>
+            <circle cx="300" cy="215" r="70" fill="url(#svWin)" class="glow"/>
+            <path d="M236 180 L300 130 L364 180 Z" fill="#141a16" stroke="#2c3a2e" stroke-width="2"/>
+            <rect x="244" y="178" width="112" height="72" fill="#1a211c" stroke="#2c3a2e" stroke-width="2"/>
+            <rect x="328" y="140" width="10" height="26" fill="#141a16"/>
+            <!-- porch -->
+            <path d="M236 214 H364 L372 222 H228 Z" fill="#111612"/>
+            <rect x="232" y="222" width="4" height="28" fill="#111612"/><rect x="364" y="222" width="4" height="28" fill="#111612"/>
+            <!-- windows, boarded -->
+            <rect x="258" y="186" width="18" height="20" fill="#ffcf6a"/><rect x="324" y="186" width="18" height="20" fill="#ffcf6a"/>
+            <rect x="290" y="150" width="20" height="18" fill="#ffcf6a" fill-opacity=".8"/>
+            <g stroke="#3b2a1a" stroke-width="3.5">
+              <path d="M255 190 L279 202"/><path d="M255 200 L279 192"/><path d="M321 188 L345 198"/><path d="M288 158 L312 162"/>
+            </g>
+            <rect x="291" y="224" width="18" height="26" fill="#2a1e14"/>
+            <rect x="258" y="228" width="16" height="16" fill="#ffcf6a" fill-opacity=".6"/>
+          </g>
+
+          <!-- zombies shambling in -->
+          <g fill="#07100a">
+            <g class="shamble"><circle cx="90" cy="292" r="7"/><path d="M84 299 H96 L98 330 H82 Z"/><path d="M96 304 L116 300" stroke="#07100a" stroke-width="4"/><path d="M85 330 L81 346 M95 330 L100 346" stroke="#07100a" stroke-width="5"/></g>
+            <g class="shamble z2"><circle cx="160" cy="316" r="8"/><path d="M153 324 H167 L170 358 H150 Z"/><path d="M167 330 L190 322 M166 338 L188 336" stroke="#07100a" stroke-width="4"/><path d="M154 358 L150 376 M166 358 L172 376" stroke="#07100a" stroke-width="5"/></g>
+            <g class="shamble z3"><circle cx="520" cy="300" r="7"/><path d="M514 307 H526 L528 338 H512 Z"/><path d="M514 312 L494 306" stroke="#07100a" stroke-width="4"/><path d="M515 338 L510 354 M525 338 L530 354" stroke="#07100a" stroke-width="5"/></g>
+            <g class="shamble"><circle cx="580" cy="336" r="8"/><path d="M573 344 H587 L590 380 H570 Z"/><path d="M573 350 L550 344 M574 358 L552 358" stroke="#07100a" stroke-width="4"/></g>
+          </g>
+          <!-- eyes -->
+          <g fill="#c8ff6a"><circle cx="93" cy="291" r="1.2"/><circle cx="164" cy="315" r="1.4"/><circle cx="517" cy="299" r="1.2"/><circle cx="576" cy="335" r="1.4"/></g>
+
+          <!-- drone camera cone -->
+          <path class="sweep" d="M430 138 L360 330 L500 330 Z" fill="url(#svCone)"/>
+          <!-- GPS waypoint -->
+          <g stroke="#b6f07a" fill="none" stroke-width="2">
+            <circle class="mote" cx="430" cy="312" r="10"/>
+            <path d="M430 290 V302 M430 322 V334 M408 312 H420 M440 312 H452"/>
+          </g>
+          <!-- drone -->
+          <g class="drone">
+            <rect x="416" y="128" width="28" height="10" rx="4" fill="#2a3230" stroke="#6b7a70" stroke-width="1.5"/>
+            <path d="M404 124 L416 130 M456 124 L444 130" stroke="#6b7a70" stroke-width="3"/>
+            <ellipse class="rotor" cx="400" cy="122" rx="14" ry="3" fill="#aab8ad" fill-opacity=".5"/>
+            <ellipse class="rotor" cx="460" cy="122" rx="14" ry="3" fill="#aab8ad" fill-opacity=".5"/>
+            <circle cx="430" cy="140" r="3.5" fill="#101614" stroke="#b6f07a" stroke-width="1.2"/>
+            <circle class="beacon" cx="444" cy="131" r="2" fill="#ff4a4a"/>
+          </g>
+          <text x="462" y="150" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#b6f07a" fill-opacity=".85">ALT 60 m · GPS</text>
+
+          <rect width="640" height="400" fill="url(#svVign)"/>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="status"><i></i>Playable · early build</span>
+        <h2><span class="svv">Survivors</span></h2>
+        <p>The dead are walking outside Evans City, PA. Your group is holed up in the old farmhouse off Ash Stop Road. The grid is failing, but GPS still works, and you have a drone.</p>
+        <ul class="facts">
+          <li>Fly the drone by hand or tap the map to send it by GPS.</li>
+          <li>Real roads, buildings and terrain around Evans City.</li>
+          <li>Coming soon: window views, zombie crowds and scavenging.</li>
+        </ul>
+        <div class="tags"><span>Survival</span><span>Drone</span><span>Zombies</span></div>
+        <span class="play">
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="currentColor"/></svg>
+          Play now
+        </span>
+      </div>
+    </a>
+
     <a class="card feature spelunker" href="/spelunker/" aria-label="Play Spelunker">
       <div class="art" aria-hidden="true">
         <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
