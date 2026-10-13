@@ -34,10 +34,12 @@ turned on appears under https://stilotto.github.io/<repo>/.
   end of the Home tab; Bots vs Drones at the top of game.html; VECTOR-1 in
   the credit line; The Common Room in the intro modal and the 3D top bar;
   Spelunker on the title screen and the hangar footer; Survivors on the
-  title screen; Army Men on the title screen; Harsh on the title screen.
+  title screen; Army Men on the title screen; Harsh on the title screen; Shield Operator on the title and
+  game-over screens.
 
 ## Projects listed
 
+- Shield Operator: /shield-operator/ (repo stilotto/shield-operator, single index.html, no build step)
 - Harsh: /harsh/ (repo stilotto/harsh, single index.html, no build step)
 - Army Men: /army-men/ (repo stilotto/army-men, Vite + Three.js; built and deployed by a GitHub Actions Pages workflow)
 - Survivors: /survivors/ (repo stilotto/survivors, multi-file ES modules, no build step)
