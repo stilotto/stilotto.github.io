@@ -227,6 +227,11 @@
 
   /* ---------- The Hundred card ---------- */
   .card h2 .hnd { font-family: Cinzel, Georgia, serif; letter-spacing: .08em; text-transform: uppercase; background: linear-gradient(180deg, #fbe9b0 20%, #d2aa52 55%, #a8632e); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 0 #3a140c); }
+  .healer { border-color: #2f5a3a; }
+  .healer .body { background: radial-gradient(120% 90% at 100% 0, rgba(77,255,122,.14), transparent 60%); }
+  .healer .tags span { border-color: #2f5a3a; color: #bfe8c4; }
+  .healer .facts li::before { color: #6dff7a; }
+  .healer .play { background: linear-gradient(135deg, #fff2a8, #4fd66a); box-shadow: 0 8px 24px -8px rgba(79,214,106,.75); color: #06210c; }
   .hundred { border-color: #5a3a22; }
   .hundred .body { background: radial-gradient(120% 90% at 100% 0, rgba(142,42,34,.22), transparent 60%); }
   .hundred .tags span { border-color: #5a3a22; color: #e0c890; }
@@ -285,6 +290,57 @@
   <h2 class="section-label">Projects</h2>
 
   <main class="grid">
+    <a class="card feature healer" href="/mmo-healer/" aria-label="Play MMO Healer">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="mhSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f6fb8"/><stop offset=".6" stop-color="#9cc4e8"/><stop offset="1" stop-color="#f3dcb0"/></linearGradient>
+<linearGradient id="mhBeam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2a8" stop-opacity="0"/><stop offset=".5" stop-color="#fff2a8" stop-opacity=".75"/><stop offset="1" stop-color="#7dffa0" stop-opacity=".55"/></linearGradient>
+<radialGradient id="mhPortal"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ff7a2a"/><stop offset="1" stop-color="#ff7a2a" stop-opacity="0"/></radialGradient>
+<radialGradient id="mhOrb"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#fff2a8"/><stop offset="1" stop-color="#fff2a8" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="640" height="400" fill="url(#mhSky)"/>
+<path d="M0 230 L90 120 L170 215 L260 95 L360 220 L450 130 L540 210 L640 140 V260 H0 Z" fill="#7d93ad"/>
+<rect y="205" width="640" height="60" fill="#8f897e"/>
+<g fill="#7d776e"><rect x="0" y="195" width="34" height="14"/><rect x="68" y="195" width="34" height="14"/><rect x="136" y="195" width="34" height="14"/><rect x="204" y="195" width="34" height="14"/><rect x="402" y="195" width="34" height="14"/><rect x="470" y="195" width="34" height="14"/><rect x="538" y="195" width="34" height="14"/><rect x="606" y="195" width="34" height="14"/></g>
+<rect x="262" y="130" width="38" height="135" fill="#9a948a"/><rect x="340" y="130" width="38" height="135" fill="#9a948a"/>
+<path d="M254 132 L281 92 L308 132 Z M332 132 L359 92 L386 132 Z" fill="#8a3a2a"/>
+<rect x="296" y="160" width="48" height="105" fill="#2a2018"/>
+<g stroke="#6a6a70" stroke-width="3"><path d="M306 160 V265 M320 160 V265 M334 160 V265 M296 185 H344 M296 212 H344 M296 240 H344"/></g>
+<rect x="470" y="150" width="130" height="115" fill="#d8c8a0"/><path d="M458 152 L535 100 L612 152 Z" fill="#9a4a2a"/>
+<rect x="490" y="180" width="24" height="26" fill="#ffd98a"/><rect x="556" y="180" width="24" height="26" fill="#ffd98a"/><rect x="522" y="215" width="26" height="50" fill="#4a2f18"/>
+<g fill="#7d776e"><rect x="40" y="150" width="14" height="115"/><rect x="118" y="150" width="14" height="115"/><rect x="34" y="138" width="104" height="16"/></g>
+<ellipse cx="86" cy="208" rx="34" ry="52" fill="url(#mhPortal)"/>
+<rect y="262" width="640" height="138" fill="#8a8272"/>
+<g fill="#9c9484" opacity=".8"><rect x="20" y="280" width="60" height="18" rx="7"/><rect x="100" y="282" width="70" height="18" rx="7"/><rect x="200" y="280" width="56" height="18" rx="7"/><rect x="420" y="282" width="64" height="18" rx="7"/><rect x="520" y="280" width="70" height="18" rx="7"/><rect x="50" y="318" width="80" height="24" rx="9"/><rect x="160" y="320" width="90" height="24" rx="9"/><rect x="470" y="320" width="84" height="24" rx="9"/><rect x="570" y="318" width="60" height="24" rx="9"/><rect x="10" y="362" width="110" height="30" rx="11"/><rect x="500" y="364" width="120" height="30" rx="11"/></g>
+<ellipse cx="395" cy="352" rx="46" ry="10" fill="#000" opacity=".28"/>
+<rect x="352" y="120" width="86" height="232" fill="url(#mhBeam)"/>
+<g><rect x="372" y="262" width="46" height="52" fill="#8a8f99"/><rect x="376" y="312" width="16" height="40" fill="#2b2622"/><rect x="398" y="312" width="16" height="40" fill="#2b2622"/><rect x="380" y="232" width="30" height="30" fill="#aab0bb"/><rect x="386" y="244" width="18" height="6" fill="#2b2622"/><rect x="358" y="264" width="14" height="44" fill="#8a8f99"/><rect x="418" y="264" width="14" height="44" fill="#8a8f99"/><rect x="342" y="270" width="18" height="40" rx="4" fill="#7a2a22"/><rect x="430" y="240" width="6" height="70" fill="#d8dde6"/></g>
+<g><rect x="345" y="196" width="100" height="14" rx="3" fill="#000"/><rect x="348" y="199" width="62" height="8" fill="#3fbf4a"/><rect x="410" y="199" width="18" height="8" fill="#b6ff9a"><animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></rect></g>
+<text x="395" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#6dff7a" stroke="#000" stroke-width=".8">+58</text>
+<ellipse cx="205" cy="384" rx="60" ry="12" fill="#000" opacity=".3"/>
+<g><rect x="172" y="268" width="66" height="116" fill="#f2ead2"/><rect x="176" y="222" width="58" height="50" fill="#f2ead2"/><rect x="238" y="262" width="62" height="18" fill="#f2ead2" transform="rotate(-24 238 270)"/><rect x="150" y="270" width="20" height="62" fill="#f2ead2"/><rect x="172" y="300" width="66" height="8" fill="#d8b45a"/><rect x="300" y="150" width="8" height="190" fill="#6b4a22" transform="rotate(8 304 245)"/></g>
+<circle cx="318" cy="150" r="34" fill="url(#mhOrb)"/><circle cx="318" cy="150" r="9" fill="#fffbe0"/>
+<g fill="#fff2a8"><circle cx="340" cy="180" r="3"/><circle cx="352" cy="205" r="2.5"/><circle cx="366" cy="222" r="2"/></g>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="status"><i></i>Playable · first build</span>
+        <h2>MMO Healer</h2>
+        <p>Everyone else is busy playing the game: duelling, trading, limping home from a wipe. You just heal them. No party, no invite, no permission.</p>
+        <ul class="facts">
+          <li>Tab to a target, cast, and watch the bar fill, like any MMO.</li>
+          <li>Level up and collect gear from grateful strangers.</li>
+          <li>Third person or first person in a busy hub city.</li>
+        </ul>
+        <div class="tags"><span>3D</span><span>RPG</span><span>Healer</span></div>
+        <span class="play">
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="currentColor"/></svg>
+          Play now
+        </span>
+      </div>
+    </a>
+
     <a class="card feature hundred" href="/arena/" aria-label="Play The Hundred">
       <div class="art" aria-hidden="true">
         <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">

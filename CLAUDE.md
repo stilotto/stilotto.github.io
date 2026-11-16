@@ -35,10 +35,12 @@ turned on appears under https://stilotto.github.io/<repo>/.
   the credit line; The Common Room in the intro modal and the 3D top bar;
   Spelunker on the title screen and the hangar footer; Survivors on the
   title screen; Army Men on the title screen; Harsh on the title screen; Shield Operator on the title and
-  game-over screens; The Hundred on the title screen and the camp footer.
+  game-over screens; The Hundred on the title screen and the camp footer;
+  MMO Healer on the title screen.
 
 ## Projects listed
 
+- MMO Healer: /mmo-healer/ (repo stilotto/mmo-healer, multi-file ES modules, no build step)
 - The Hundred: /arena/ (repo stilotto/arena, index.html + engine.js + ui.js, no build step)
 - Shield Operator: /shield-operator/ (repo stilotto/shield-operator, single index.html, no build step)
 - Harsh: /harsh/ (repo stilotto/harsh, single index.html, no build step)
